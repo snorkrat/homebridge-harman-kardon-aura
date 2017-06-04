@@ -47,7 +47,7 @@ function HarmanKardonAuraAccessory(log, config) {
 };
 
 //custom characteristics
-HarmanKardonAuraAccessory.Volume = function () {
+HarmanKardonAuraAccessory.Volume = function setBrightness(volume, callback) {
     Characteristic.call(this, 'Volume', '00001001-0000-1000-8000-135D67EC4377');
     this.setProps({
         format: Characteristic.Formats.UINT8,
@@ -72,7 +72,7 @@ HarmanKardonAuraAccessory.Mute = function () {
 
 HarmanKardonAuraAccessory.AudioService = function (displayName, subtype) {
     Service.call(this, displayName, '48a7057e-cb08-407f-bf03-6317700b3085', subtype);
-    //this.addCharacteristic(HarmanKardonAVRAccessory.Volume);
+    //this.addCharacteristic(HarmanKardonAuraAccessory.Volume);
     this.addOptionalCharacteristic(HarmanKardonAVRAccessory.Mute);
 };
 
@@ -157,13 +157,13 @@ HarmanKardonAuraAccessory.prototype = {
      //.setCharacteristic(Characteristic.SerialNumber, this.model_name);
            
     
-    var outletService = new Service.Outlet(this.name);
-      availableServices.push(outletService); 
+    var lightService = new Service.(this.name);
+      availableServices.push(lightService); 
       
-    outletService
+    lightService
       .getCharacteristic(Characteristic.On)
-      .on('set', this.setPowerState.bind(this))
-      .on('get', this.getPowerState.bind(this));
+      .on('set', this.setBrightness.bind(this))
+      .on('get', this.getBrightness.bind(this));
     
     var switchService = new Service.Switch('Sat/STB');
       availableServices.push(switchService);    
