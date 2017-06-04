@@ -47,7 +47,7 @@ function HarmanKardonAuraAccessory(log, config) {
 };
 
 //custom characteristics
-HarmanKardonAuraAccessory.Volume = function () {
+HarmanKardonAuraAccessory.Volume = function (volume, callback) {
     Characteristic.call(this, 'Volume', '00001001-0000-1000-8000-135D67EC4377');
     this.setProps({
         format: Characteristic.Formats.UINT8,
@@ -165,12 +165,12 @@ HarmanKardonAuraAccessory.prototype = {
       .on('set', this.setPowerState.bind(this))
       .on('get', this.getPowerState.bind(this));
 
-    var lightService = new Service.Lightbulb('Input');
+    var lightService = new Service.Lightbulb('Volume');
       availableServices.push(lightService);
 
     lightService
       .getCharacteristic(Characteristic.Brightness)
-      .on('set', this.setInput.bind(this))
+      .on('set', this.setVolume.bind(this))
 
 
      /* var audioService = new HarmanKardonAuraAccessory.AudioService('Input');
