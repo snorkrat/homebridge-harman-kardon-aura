@@ -26,7 +26,7 @@ function fixInheritance(subclass, superclass) {
 
 function buildRequest(cmd,para) {
    var text = '';
-   var payload = '<?xml version="1.0" encoding="UTF-8"?> <harman> <aura> <common> <control> <name>'+cmd+'</name> <zone>Main Zone</zone> <para>'+para+'</para> </control> </common> </aura> </harman>';
+   var payload = '<?xml version="1.0" encoding="UTF-8"?> <harman> <avr> <common> <control> <name>'+cmd+'</name> <zone>Main Zone</zone> <para>'+para+'</para> </control> </common> </avr> </harman>';
    text += 'POST HK_APP HTTP/1.1\r\n';
    text += 'Host: :' + this.ip + '\r\n';
    text += 'User-Agent: Harman Kardon Aura Controller/1.0\r\n';
