@@ -1,0 +1,26 @@
+{
+  "name": "homebridge-harman-kardon-avr",
+  "version": "1.0.0",
+  "description": "control harman kardon avr for homebridge: https://github.com/nfarina/homebridge",
+  "main": "index.js",
+  "engines": {
+    "node": ">=0.12.0",
+    "homebridge": ">=0.2.0"
+  },
+  "dependencies": {
+    "request": "^2.65.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcelkordek/homebridge-harman-kardon-avr.git"
+  },
+  "keywords": [
+    "homebridge-plugin"
+  ],
+  "author": "Marcel Kordek",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marcelkordek/homebridge-harman-kardon-avr/issues"
+  },
+  "homepage": "https://github.com/marcelkordek/homebridge-harman-kardon-avr#readme"
+}
