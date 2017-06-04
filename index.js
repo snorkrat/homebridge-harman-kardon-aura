@@ -162,8 +162,8 @@ HarmanKardonAVRAccessory.prototype = {
       
     lightService
       .getCharacteristic(Characteristic.On)
-      .on('set', this.setBrightness.bind(this))
-      .on('get', this.getBrightness.bind(this));
+      .on('set', this.setProps.bind(this))
+      .on('get', this.getDefaultValue.bind(this));
     
     var switchService = new Service.Switch('Sat/STB');
       availableServices.push(switchService);    
