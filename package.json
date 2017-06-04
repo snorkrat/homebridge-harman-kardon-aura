@@ -1,7 +1,7 @@
 {
-  "name": "homebridge-harman-kardon-ura",
+  "name": "homebridge-harman-kardon-aura",
   "version": "1.0.0",
-  "description": "control harman kardon avr for homebridge: https://github.com/nfarina/homebridge",
+  "description": "control harman kardon aura for homebridge: https://github.com/nfarina/homebridge",
   "main": "index.js",
   "engines": {
     "node": ">=0.12.0",
