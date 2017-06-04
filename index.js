@@ -8,11 +8,11 @@ module.exports = function(homebridge) {
   Service = homebridge.hap.Service;
   Characteristic = homebridge.hap.Characteristic;
     
-  //fixInheritance(HarmanKardonAVRAccessory.Volume, Characteristic);    
-  fixInheritance(HarmanKardonAVRAccessory.Mute, Characteristic);
-  fixInheritance(HarmanKardonAVRAccessory.AudioService, Service);    
+  //fixInheritance(HarmanKardonAuraAccessory.Volume, Characteristic);    
+  fixInheritance(HarmanKardonAuraAccessory.Mute, Characteristic);
+  fixInheritance(HarmanKardonAuraccessory.AudioService, Service);    
 
-  homebridge.registerAccessory("homebridge-harman-kardon-avr", "harman-kardon-avr", HarmanKardonAVRAccessory);
+  homebridge.registerAccessory("homebridge-harman-kardon-aura", "harman-kardon-aura", "Harman Kardon Aura" HarmanKardonAuraAccessory);
 };
 
 function fixInheritance(subclass, superclass) {
@@ -29,7 +29,7 @@ function buildRequest(cmd,para) {
    var payload = '<?xml version="1.0" encoding="UTF-8"?> <harman> <avr> <common> <control> <name>'+cmd+'</name> <zone>Main Zone</zone> <para>'+para+'</para> </control> </common> </avr> </harman>';
    text += 'POST HK_APP HTTP/1.1\r\n';
    text += 'Host: :' + this.ip + '\r\n';
-   text += 'User-Agent: Harman Kardon AVR Controller/1.0\r\n';
+   text += 'User-Agent: Harman Kardon Aura Controller/1.0\r\n';
    text += 'Content-Length: ' + payload.length + '\r\n';
    text += '\r\n';
    text += payload;
@@ -37,7 +37,7 @@ function buildRequest(cmd,para) {
    return text;
 };
 
-function HarmanKardonAVRAccessory(log, config) {
+function HarmanKardonAuraAccessory(log, config) {
   this.log          = log;
   this.name         = config["name"];
   this.ip           = config["ip"];
@@ -47,7 +47,7 @@ function HarmanKardonAVRAccessory(log, config) {
 };
 
 //custom characteristics
-HarmanKardonAVRAccessory.Volume = function () {
+HarmanKardonAuraAccessory.Volume = function () {
     Characteristic.call(this, 'Volume', '00001001-0000-1000-8000-135D67EC4377');
     this.setProps({
         format: Characteristic.Formats.UINT8,
@@ -60,7 +60,7 @@ HarmanKardonAVRAccessory.Volume = function () {
     this.value = this.getDefaultValue();
 };
 
-HarmanKardonAVRAccessory.Mute = function () {
+HarmanKardonAuraAccessory.Mute = function () {
     Characteristic.call(this, 'Outlet In Use', '00000026-0000-1000-8000-0026BB765291');
   this.setProps({
     format: Characteristic.Formats.BOOL,
@@ -70,14 +70,14 @@ HarmanKardonAVRAccessory.Mute = function () {
 };
 
 
-HarmanKardonAVRAccessory.AudioService = function (displayName, subtype) {
+HarmanKardonAuraAccessory.AudioService = function (displayName, subtype) {
     Service.call(this, displayName, '48a7057e-cb08-407f-bf03-6317700b3085', subtype);
     //this.addCharacteristic(HarmanKardonAVRAccessory.Volume);
     this.addOptionalCharacteristic(HarmanKardonAVRAccessory.Mute);
 };
 
 
-HarmanKardonAVRAccessory.prototype = {
+HarmanKardonAuraAccessory.prototype = {
     
   setPowerState: function(powerOn, callback) {
     var that        = this;
@@ -173,10 +173,10 @@ HarmanKardonAVRAccessory.prototype = {
       .on('set', this.setInput.bind(this))
 
       
-     /* var audioService = new HarmanKardonAVRAccessory.AudioService('Input');
+     /* var audioService = new HarmanKardonAuraAccessory.AudioService('Input');
     availableServices.push(audioService);
       audioService
-      .getCharacteristic(HarmanKardonAVRAccessory.Mute)
+      .getCharacteristic(HarmanKardonAuraAccessory.Mute)
       .on('set', this.setInput.bind(this));*/
 
       
