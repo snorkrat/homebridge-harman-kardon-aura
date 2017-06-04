@@ -10,8 +10,8 @@
 
     "accessories": [
         {
-            "accessory": "Harman Kardon Aura",
-            "name": "Aura",
+            "accessory": "harman-kardon-aura",
+            "name": "HK Aura",
             "description": "Harman Kardon Aura",
             "manufacturer": "Harman Kardon",
             "model_name": "Aura",
