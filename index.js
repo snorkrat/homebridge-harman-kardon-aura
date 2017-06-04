@@ -26,7 +26,7 @@ function fixInheritance(subclass, superclass) {
 
 function buildRequest(cmd,para) {
    var text = '';
-   var payload = '<?xml version="1.0" encoding="UTF-8"?> <harman> <avr> <common> <control> <name>'+cmd+'</name> <zone>Main Zone</zone> <para>'+para+'</para> </control> </common> </avr> </harman>';
+   var payload = '<?xml version="1.0" encoding="UTF-8"?> <harman> <aura> <common> <control> <name>'+cmd+'</name> <zone>Main Zone</zone> <para>'+para+'</para> </control> </common> </aura> </harman>';
    text += 'POST HK_APP HTTP/1.1\r\n';
    text += 'Host: :' + this.ip + '\r\n';
    text += 'User-Agent: Harman Kardon Aura Controller/1.0\r\n';
@@ -42,7 +42,7 @@ function HarmanKardonAuraAccessory(log, config) {
   this.name         = config["name"];
   this.ip           = config["ip"];
   this.port         = config["port"];    
-  this.model_name   = config["model_name"] || "AVR 161";
+  this.model_name   = config["model_name"] || "Aura";
   this.manufacturer = config["manufacturer"] || "Harman Kardon";    
 };
 
@@ -73,7 +73,7 @@ HarmanKardonAuraAccessory.Mute = function () {
 HarmanKardonAuraAccessory.AudioService = function (displayName, subtype) {
     Service.call(this, displayName, '48a7057e-cb08-407f-bf03-6317700b3085', subtype);
     //this.addCharacteristic(HarmanKardonAuraAccessory.Volume);
-    this.addOptionalCharacteristic(HarmanKardonAVRAccessory.Mute);
+    this.addOptionalCharacteristic(HarmanKardonAuraAccessory.Mute);
 };
 
 
