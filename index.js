@@ -47,7 +47,7 @@ function HarmanKardonAVRAccessory(log, config) {
 };
 
 //custom characteristics
-HarmanKardonAVRAccessory.Volume = function () {
+HarmanKardonAVRAccessory.Volume = function setBrightness(volume, callback) {
     Characteristic.call(this, 'Volume', '00001001-0000-1000-8000-135D67EC4377');
     this.setProps({
         format: Characteristic.Formats.UINT8,
