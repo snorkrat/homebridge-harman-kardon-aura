@@ -169,7 +169,7 @@ HarmanKardonAuraAccessory.prototype = {
       availableServices.push(lightService);
 
     lightService
-      .getCharacteristic(Characteristic.On)
+      .getCharacteristic(Characteristic.Brightness)
       .on('set', this.setInput.bind(this))
 
 
