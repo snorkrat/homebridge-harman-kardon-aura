@@ -1,0 +1,22 @@
+{
+    "bridge": {
+        "name": "Homebridge",
+        "username": "CC:22:3D:E3:CE:30",
+        "port": 51826,
+        "pin": "123-45-678"
+    },
+
+    "description": "",
+
+    "accessories": [
+        {
+            "accessory": "Harman Kardon Aura",
+            "name": "Aura",
+            "description": "Harman Kardon Aura",
+            "manufacturer": "Harman Kardon",
+            "model_name": "Aura",
+            "ip": "10.0.0.85",
+            "port": "10025"
+        }
+    ]
+}
