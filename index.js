@@ -10,7 +10,7 @@ module.exports = function(homebridge) {
     
   //fixInheritance(HarmanKardonAuraAccessory.Volume, Characteristic);    
   fixInheritance(HarmanKardonAuraAccessory.Mute, Characteristic);
-  fixInheritance(HarmanKardonAuraccessory.AudioService, Service);    
+  fixInheritance(HarmanKardonAuraAccessory.AudioService, Service);    
 
   homebridge.registerAccessory("homebridge-harman-kardon-aura", "harman-kardon-aura", "Harman Kardon Aura", HarmanKardonAuraAccessory);
 };
