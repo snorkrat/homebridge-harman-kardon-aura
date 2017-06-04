@@ -157,7 +157,7 @@ HarmanKardonAuraAccessory.prototype = {
      //.setCharacteristic(Characteristic.SerialNumber, this.model_name);
            
     
-    var lightService = new Service.(this.name);
+    var lightService = new Service.Lightbulb(this.name);
       availableServices.push(lightService); 
       
     lightService
