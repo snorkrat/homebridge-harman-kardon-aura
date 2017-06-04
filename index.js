@@ -165,10 +165,10 @@ HarmanKardonAuraAccessory.prototype = {
       .on('set', this.setPowerState.bind(this))
       .on('get', this.getPowerState.bind(this));
 
-    var switchService = new Service.Switch('Sat/STB');
-      availableServices.push(switchService);
+    var lightService = new Service.Lightbulb('Input');
+      availableServices.push(lightService);
 
-    switchService
+    lightService
       .getCharacteristic(Characteristic.On)
       .on('set', this.setInput.bind(this))
 
