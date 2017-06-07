@@ -146,13 +146,13 @@ HarmanKardonAuraAccessory.prototype = {
       if(volume){
             this.log("Volume Up");
             client.connect(this.port, this.ip, function() {
-            client.write(buildRequest('volumeUp'));
+            client.write(buildRequest('void volumeup'));
             client.destroy();
             });
       } else {
             this.log("Volume Down");
             client.connect(this.port, this.ip, function() {
-            client.write(buildRequest('volumeDown'));
+            client.write(buildRequest('void volumedown'));
             client.destroy();
             });
       }
