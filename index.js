@@ -84,13 +84,13 @@ HarmanKardonAuraAccessory.prototype = {
     if (powerOn) {
         var client = new net.Socket();
         client.connect(this.port, this.ip, function() {
-        client.write(buildRequest('power-on'));
+        client.write(buildRequest('void on'));
         client.destroy();
         });
     } else {
         var client = new net.Socket();
         client.connect(this.port, this.ip, function() {
-        client.write(buildRequest('power-off'));
+        client.write(buildRequest('void off'));
         client.destroy();
         });
     }
@@ -195,6 +195,7 @@ HarmanKardonAuraAccessory.prototype = {
     lightService
       .getCharacteristic(Characteristic.Brightness)
       .on('set', this.setVolume.bind(this))
+      .on('get', this.getVolume.bind(this));
 
 
      /* var audioService = new HarmanKardonAuraAccessory.AudioService('Input');
