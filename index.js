@@ -139,6 +139,30 @@ HarmanKardonAuraAccessory.prototype = {
       callback()
   },
 
+  setVolume: function(volume, callback) {
+    var that        = this;
+    this.log("Set Volume:" + volume);
+    var client = new net.Socket();
+      if(volume){
+            this.log("Volume Up");
+            client.connect(this.port, this.ip, function() {
+            client.write(buildRequest('volumeUp'));
+            client.destroy();
+            });
+      } else {
+            this.log("Volume Down");
+            client.connect(this.port, this.ip, function() {
+            client.write(buildRequest('volumeDown'));
+            client.destroy();
+            });
+      }
+      client.on('error', function(err){
+        that.log("Error change volume: "+err.message);
+      })
+
+      callback()
+  },
+
   identify: function(callback) {
       this.log('Identify requested!');
       callback(); // success
@@ -170,7 +194,7 @@ HarmanKardonAuraAccessory.prototype = {
 
     lightService
       .getCharacteristic(Characteristic.Brightness)
-      .on('set', this.setInput.bind(this))
+      .on('set', this.setVolume.bind(this))
 
 
      /* var audioService = new HarmanKardonAuraAccessory.AudioService('Input');
