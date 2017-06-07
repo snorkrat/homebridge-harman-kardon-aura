@@ -195,7 +195,6 @@ HarmanKardonAuraAccessory.prototype = {
     lightService
       .getCharacteristic(Characteristic.Brightness)
       .on('set', this.setVolume.bind(this))
-      .on('get', this.getVolume.bind(this));
 
 
      /* var audioService = new HarmanKardonAuraAccessory.AudioService('Input');
